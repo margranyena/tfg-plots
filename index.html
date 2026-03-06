@@ -22,16 +22,15 @@
     }
 
     .cards {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(320px, 1fr));
       gap: 28px;
-      align-items: flex-start;
+      align-items: start;
     }
 
     .card {
       display: block;
       width: 100%;
-      max-width: 650px;
       text-decoration: none;
       color: inherit;
       background: white;
@@ -66,7 +65,7 @@
     }
 
     .title {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: bold;
       margin-bottom: 10px;
     }
@@ -74,6 +73,12 @@
     .desc {
       color: #4b5563;
       line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
