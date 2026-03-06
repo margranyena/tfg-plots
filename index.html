@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TFG - Visualitzacions interactives</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      margin: 40px;
+      color: #1f2937;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 30px;
+      color: #4b5563;
+    }
+
+    .card {
+      display: block;
+      max-width: 700px;
+      text-decoration: none;
+      color: inherit;
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e0ecff;
+      color: #1d4ed8;
+      margin-bottom: 14px;
+    }
+
+    .title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      color: #4b5563;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>TFG - Visualitzacions interactives</h1>
+  <p>Fes clic sobre la figura per obrir la versió interactiva.</p>
+
+  <a class="card" href="SST_interactiva_slider.html" target="_blank">
+    <div class="tag">Plot interactiu</div>
+    <div class="title">SST observada vs contrafactual</div>
+    <div class="desc">
+      Evolució temporal de la SST, climatologia i diferència observacions−counterfactual.
+      Clica per obrir el gràfic interactiu.
+    </div>
+  </a>
+</body>
+</html>
