@@ -23,12 +23,12 @@
 
     .card {
       display: block;
-      max-width: 700px;
+      max-width: 1100px;
       text-decoration: none;
       color: inherit;
       background: white;
       border-radius: 16px;
-      padding: 24px;
+      overflow: hidden;
       box-shadow: 0 6px 18px rgba(0,0,0,0.10);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
@@ -36,6 +36,15 @@
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px 24px 24px 24px;
     }
 
     .tag {
@@ -65,11 +74,14 @@
   <p>Fes clic sobre la figura per obrir la versió interactiva.</p>
 
   <a class="card" href="SST_interactiva_slider.html" target="_blank">
-    <div class="tag">Plot interactiu</div>
-    <div class="title">SST observada vs contrafactual</div>
-    <div class="desc">
-      Evolució temporal de la SST, climatologia i diferència observacions−counterfactual.
-      Clica per obrir el gràfic interactiu.
+    <img src="sst_portada.png" alt="SST observada vs contrafactual">
+    <div class="card-content">
+      <div class="tag">Plot interactiu</div>
+      <div class="title">SST observada vs contrafactual</div>
+      <div class="desc">
+        Evolució temporal de la SST, climatologia i diferència observacions−counterfactual.
+        Clica sobre la imatge per obrir el gràfic interactiu.
+      </div>
     </div>
   </a>
 </body>
