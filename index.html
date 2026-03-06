@@ -21,21 +21,29 @@
       color: #4b5563;
     }
 
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
     .card {
-  display: block;
-  max-width: 650px;
-  text-decoration: none;
-  color: inherit;
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
+      display: block;
+      width: 100%;
+      max-width: 650px;
+      text-decoration: none;
+      color: inherit;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
     }
 
     .card img {
@@ -73,29 +81,30 @@
   <h1>TFG - Visualitzacions interactives</h1>
   <p>Fes clic sobre la figura per obrir la versió interactiva.</p>
 
-  <a class="card" href="SST_interactiva_slider.html" target="_blank">
-    <img src="SST_ev_temp_peak_20250626_v5.png" alt="SST observada vs contrafactual">
-    <div class="card-content">
-      <div class="tag">Plot interactiu</div>
-      <div class="title">SST observada vs contrafactual</div>
-      <div class="desc">
-        Evolució temporal de la SST, climatologia i diferència observacions−counterfactual.
-        Clica sobre la imatge per obrir el gràfic interactiu.
+  <div class="cards">
+    <a class="card" href="SST_interactiva_slider.html" target="_blank">
+      <img src="SST_ev_temp_peak_20250626_v5.png" alt="SST observada vs contrafactual">
+      <div class="card-content">
+        <div class="tag">Plot interactiu</div>
+        <div class="title">SST observada vs contrafactual</div>
+        <div class="desc">
+          Evolució temporal de la SST, climatologia i diferència observacions−counterfactual.
+          Clica sobre la imatge per obrir el gràfic interactiu.
+        </div>
       </div>
-    </div>
-  </a>
-  <br>
+    </a>
 
-<a class="card" href="histograma_probabilitat_acumulatiu.html" target="_blank">
-  <img src="histograma_probabilitat_portada.png" alt="Histograma anual de SST i probabilitat anual">
-  <div class="card-content">
-    <div class="tag">Plot interactiu</div>
-    <div class="title">Histograma anual de SST + probabilitat anual</div>
-    <div class="desc">
-      Evolució acumulativa dels histogrames anuals de SST i de la probabilitat anual que SST &gt; 28 °C.
-      Clica sobre la imatge per obrir el gràfic interactiu.
-    </div>
+    <a class="card" href="histograma_probabilitat_acumulatiu.html" target="_blank">
+      <img src="histograma_probabilitat_portada.png" alt="Histograma anual de SST i probabilitat anual">
+      <div class="card-content">
+        <div class="tag">Plot interactiu</div>
+        <div class="title">Histograma anual de SST + probabilitat anual</div>
+        <div class="desc">
+          Evolució acumulativa dels histogrames anuals de SST i de la probabilitat anual que SST &gt; 28 °C.
+          Clica sobre la imatge per obrir el gràfic interactiu.
+        </div>
+      </div>
+    </a>
   </div>
-</a>
 </body>
 </html>
