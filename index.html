@@ -1,115 +1,174 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ca">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TFG - Visualitzacions interactives</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onades de calor marines: un senyal del canvi climàtic a la Mediterrània occidental</title>
   <style>
+    :root {
+      --ink: #172026;
+      --muted: #5c6870;
+      --line: #d7dde1;
+      --paper: #ffffff;
+      --bg: #f6f8f7;
+      --accent: #c3422f;
+      --accent-2: #087f8c;
+      --accent-3: #d09b2d;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: #f6f7fb;
-      margin: 40px;
-      color: #1f2937;
-    }
-
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin-bottom: 30px;
-      color: #4b5563;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(320px, 1fr));
-      gap: 28px;
-      align-items: start;
-    }
-
-    .card {
-      display: block;
-      width: 100%;
-      text-decoration: none;
-      color: inherit;
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-    }
-
-    .card img {
-      width: 100%;
-      display: block;
-    }
-
-    .card-content {
-      padding: 20px 24px 24px 24px;
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.85rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #e0ecff;
-      color: #1d4ed8;
-      margin-bottom: 14px;
-    }
-
-    .title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .desc {
-      color: #4b5563;
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
       line-height: 1.5;
     }
-
-    @media (max-width: 900px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 48px;
+    }
+    header {
+      display: grid;
+      gap: 10px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4.4vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0;
+      max-width: 900px;
+    }
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 780px;
+      font-size: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      padding-top: 24px;
+    }
+    .figure-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+      color: inherit;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--accent);
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+    .figure-card:nth-child(2n) { border-top-color: var(--accent-2); }
+    .figure-card:nth-child(3n) { border-top-color: var(--accent-3); }
+    .figure-card:hover {
+      transform: translateY(-2px);
+      border-color: #aeb8be;
+      box-shadow: 0 14px 30px rgba(23, 32, 38, 0.08);
+    }
+    .thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #eef1f2;
+      border-bottom: 1px solid var(--line);
+    }
+    .card-kicker,
+    .figure-card strong,
+    .desc {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+    .card-kicker {
+      color: var(--muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    strong {
+      font-size: 1.14rem;
+      line-height: 1.22;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-bottom: 16px;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding-top: 26px;
     }
   </style>
 </head>
 <body>
-  <h1>TFG - Visualitzacions interactives</h1>
-  <p>Fes clic sobre la figura per obrir la versió interactiva.</p>
+  <main>
+    <header>
+      <h1>Onades de calor marines: un senyal del canvi climàtic a la Mediterrània occidental</h1>
+      <p class="lead">Visualitzacions complementaries per explorar la temperatura superficial del mar, el contrafactual i les onades de calor marines a la Mediterrania occidental.</p>
+    </header>
+    <section class="grid" aria-label="Llista de figures interactives">
+      
+        <a class="figure-card" href="SST_interactiva_slider.html" aria-label="Obrir SST observada vs contrafactual">
+          <img class="thumb" src="thumbs/thumb_sst_obs_cf.jpg" alt="Miniatura: SST observada vs contrafactual" loading="lazy">
+          <span class="card-kicker">Figura interactiva</span>
+          <strong>SST observada vs contrafactual</strong>
+          <span class="desc">Serie temporal completa amb comparacio entre observacions, contrafactual i diferencia.</span>
+        </a>
+        
 
-  <div class="cards">
-    <a class="card" href="SST_interactiva_slider.html" target="_blank">
-      <img src="SST_ev_temp_peak_20250626_v5.png" alt="SST observada vs contrafactual">
-      <div class="card-content">
-        <div class="tag">Plot interactiu</div>
-        <div class="title">SST observada vs contrafactual</div>
-        <div class="desc">
-          Evolució temporal de la SST, climatologia i diferència observacions−counterfactual.
-          Clica sobre la imatge per obrir el gràfic interactiu.
-        </div>
-      </div>
-    </a>
+        <a class="figure-card" href="histograma_probabilitat_acumulatiu.html" aria-label="Obrir Histograma anual de SST">
+          <img class="thumb" src="thumbs/thumb_histograma_sst.jpg" alt="Miniatura: Histograma anual de SST" loading="lazy">
+          <span class="card-kicker">Figura interactiva</span>
+          <strong>Histograma anual de SST</strong>
+          <span class="desc">Distribucio anual acumulativa i probabilitat de superar el llindar de 28 degC.</span>
+        </a>
+        
 
-    <a class="card" href="histograma_probabilitat_acumulatiu.html" target="_blank">
-      <img src="histograma_probabilitat_portada.png" alt="Histograma anual de SST i probabilitat anual">
-      <div class="card-content">
-        <div class="tag">Plot interactiu</div>
-        <div class="title">Histograma anual de SST + probabilitat anual</div>
-        <div class="desc">
-          Evolució acumulativa dels histogrames anuals de SST i de la probabilitat anual que SST &gt; 28 °C.
-          Clica sobre la imatge per obrir el gràfic interactiu.
-        </div>
-      </div>
-    </a>
-  </div>
+        <a class="figure-card" href="calendari_sst_regional.html" aria-label="Obrir Calendari SST regional">
+          <img class="thumb" src="thumbs/thumb_calendari_sst.jpg" alt="Miniatura: Calendari SST regional" loading="lazy">
+          <span class="card-kicker">Figura interactiva</span>
+          <strong>Calendari SST regional</strong>
+          <span class="desc">Mapa any-dia de l'any per comparar SST observada, contrafactual i Delta obs-cf.</span>
+        </a>
+        
+
+        <a class="figure-card" href="mhw_evolucio_interactiva.html" aria-label="Obrir MHW: durada i intensitat">
+          <img class="thumb" src="thumbs/thumb_mhw_evolucio.jpg" alt="Miniatura: MHW: durada i intensitat" loading="lazy">
+          <span class="card-kicker">Figura interactiva</span>
+          <strong>MHW: durada i intensitat</strong>
+          <span class="desc">Evolucio anual de les onades de calor marines amb regressions 1980+ i comparativa obs-cf.</span>
+        </a>
+        
+
+        <a class="figure-card" href="mhw_durada_intensitat_animat.html" aria-label="Obrir MHW: durada vs intensitat">
+          <img class="thumb" src="thumbs/thumb_mhw_scatter_animat.jpg" alt="Miniatura: MHW: durada vs intensitat" loading="lazy">
+          <span class="card-kicker">Figura animada</span>
+          <strong>MHW: durada vs intensitat</strong>
+          <span class="desc">Els punts apareixen any a any; el color indica l'any i la mida creix amb la intensitat.</span>
+        </a>
+        
+
+        <a class="figure-card" href="animacio_increment_sst_estiu.html" aria-label="Obrir Escalfament estival observat">
+          <img class="thumb" src="thumbs/thumb_animacio_increment_sst.jpg" alt="Miniatura: Escalfament estival observat" loading="lazy">
+          <span class="card-kicker">Animacio GIF</span>
+          <strong>Escalfament estival observat</strong>
+          <span class="desc">Animacio anual de la SST observada de maig-octubre respecte la referencia 1940-1959, amb escala fixa.</span>
+        </a>
+        
+    </section>
+    <footer>
+      Clica qualsevol miniatura per obrir la figura. Pots fer zoom, passar el cursor pels punts i utilitzar els sliders quan apareguin.
+    </footer>
+  </main>
 </body>
 </html>
