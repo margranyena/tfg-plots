@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Animacio de l'increment estival de SST</title>
+  <title>Animacions espacials de SST i MHW</title>
   <style>
     :root {
       --ink: #172026;
@@ -12,6 +12,7 @@
       --paper: #ffffff;
       --bg: #f6f8f7;
       --accent: #c3422f;
+      --accent-2: #087f8c;
     }
     * { box-sizing: border-box; }
     body {
@@ -51,6 +52,25 @@
       color: var(--muted);
       max-width: 760px;
     }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      flex-wrap: wrap;
+    }
+    label {
+      font-weight: 700;
+    }
+    select {
+      min-width: min(100%, 320px);
+      border: 1px solid #b9c4cb;
+      border-radius: 6px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      padding: 9px 34px 9px 11px;
+    }
     figure {
       margin: 0;
       background: var(--paper);
@@ -75,27 +95,10 @@
       flex-wrap: wrap;
       margin-top: 14px;
     }
+    .actions a {
+      color: var(--accent-2);
+    }
   </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- TFG_VIEWPORT_FIT_START -->
 <style>
@@ -161,19 +164,64 @@
   <main>
     <div class="top">
       <div>
-        <h1>Increment estival de SST</h1>
-        <p>Increment positiu de la SST mitjana de maig-octubre respecte el periode 1940-1959. L'escala de color es fixa entre 0 i 3 &deg;C per fer visible l'escalfament progressiu.</p>
+        <h1>Mapes animats de l'escalfament i les MHW</h1>
+        <p>Selector de mapes anuals per veure l'evolucio espacial de la SST estival i de les onades de calor marines.</p>
       </div>
       <a href="index.html">Tornar a l'index</a>
     </div>
+    <div class="controls">
+      <label for="metric">Variable</label>
+      <select id="metric">
+        <option value="sst">Increment estival de SST</option>
+        <option value="mhw-days">Dies en MHW (obs-cf)</option>
+        <option value="mhw-intensity">Intensitat MHW (obs-cf)</option>
+      </select>
+    </div>
     <figure>
-      <img src="animacio_increment_sst_estiu.gif" alt="Animacio anual de l'increment estival de SST a la Mediterrania occidental">
-      <figcaption>Els tons vermells indiquen SST estival mes alta que la referencia 1940-1959. El grafic incrustat mostra la mitjana regional acumulada any a any.</figcaption>
+      <img id="animation" src="animacio_increment_sst_estiu.gif" alt="Animacio anual de l'increment estival de SST a la Mediterrania occidental">
+      <figcaption id="caption">Els tons vermells indiquen SST estival mes alta que la referencia 1940-1959. El grafic incrustat mostra la mitjana regional acumulada any a any.</figcaption>
     </figure>
     <div class="actions">
-      <a href="animacio_increment_sst_estiu.gif" download>Descarregar GIF</a>
-      <a href="animacio_increment_sst_estiu_poster.png" download>Descarregar imatge resum</a>
+      <a id="downloadGif" href="animacio_increment_sst_estiu.gif" download>Descarregar GIF</a>
+      <a id="downloadPoster" href="animacio_increment_sst_estiu_poster.png" download>Descarregar imatge resum</a>
     </div>
   </main>
+  <script>
+    const animations = {
+      "sst": {
+        gif: "animacio_increment_sst_estiu.gif",
+        poster: "animacio_increment_sst_estiu_poster.png",
+        alt: "Animacio anual de l'increment estival de SST a la Mediterrania occidental",
+        caption: "Els tons vermells indiquen SST estival mes alta que la referencia 1940-1959. El grafic incrustat mostra la mitjana regional acumulada any a any."
+      },
+      "mhw-days": {
+        gif: "animacio_mhw_dies_delta.gif",
+        poster: "animacio_mhw_dies_delta_poster.png",
+        alt: "Animacio anual del Delta de dies en MHW observats menys contrafactuals",
+        caption: "Mapa anual del nombre addicional de dies en MHW respecte el contrafactual. L'escala es fixa per comparar anys i detectar on s'intensifica la durada."
+      },
+      "mhw-intensity": {
+        gif: "animacio_mhw_intensitat_delta.gif",
+        poster: "animacio_mhw_intensitat_delta_poster.png",
+        alt: "Animacio anual del Delta d'intensitat de MHW observada menys contrafactual",
+        caption: "Mapa anual de l'increment d'intensitat mitjana de les MHW respecte el contrafactual, calculat sobre els dies MHW observats."
+      }
+    };
+
+    const selector = document.getElementById("metric");
+    const image = document.getElementById("animation");
+    const caption = document.getElementById("caption");
+    const downloadGif = document.getElementById("downloadGif");
+    const downloadPoster = document.getElementById("downloadPoster");
+
+    selector.addEventListener("change", () => {
+      const item = animations[selector.value];
+      image.src = item.gif;
+      image.alt = item.alt;
+      caption.textContent = item.caption;
+      downloadGif.href = item.gif;
+      downloadPoster.href = item.poster;
+    });
+  </script>
 </body>
 </html>
