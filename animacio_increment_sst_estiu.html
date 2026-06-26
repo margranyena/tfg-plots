@@ -99,66 +99,6 @@
       color: var(--accent-2);
     }
   </style>
-
-<!-- TFG_VIEWPORT_FIT_START -->
-<style>
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  main {
-    height: 100vh;
-    padding: 12px 0 10px !important;
-    display: flex;
-    flex-direction: column;
-  }
-  .top {
-    margin-bottom: 8px !important;
-    padding-bottom: 8px !important;
-    align-items: center !important;
-    flex: 0 0 auto;
-  }
-  h1 {
-    font-size: clamp(1.35rem, 2.4vw, 2.35rem) !important;
-    line-height: 1 !important;
-  }
-  p {
-    margin-top: 5px !important;
-    font-size: 0.92rem !important;
-  }
-  figure {
-    flex: 1 1 auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  img {
-    flex: 1 1 auto;
-    width: auto !important;
-    max-width: 100% !important;
-    max-height: calc(100vh - 150px) !important;
-    object-fit: contain;
-    margin: 0 auto;
-    background: #ffffff;
-  }
-  figcaption {
-    flex: 0 0 auto;
-    padding: 7px 10px !important;
-    font-size: 0.84rem !important;
-  }
-  .actions {
-    flex: 0 0 auto;
-    margin-top: 7px !important;
-    font-size: 0.88rem;
-  }
-  @media (max-height: 740px) {
-    p { display: none; }
-    img { max-height: calc(100vh - 112px) !important; }
-  }
-</style>
-<!-- TFG_VIEWPORT_FIT_END -->
-
 </head>
 <body>
   <main>
@@ -173,7 +113,7 @@
       <label for="metric">Variable</label>
       <select id="metric">
         <option value="sst">Increment estival de SST</option>
-        <option value="mhw-days">Dies en MHW (obs-cf)</option>
+        <option value="mhw-days">Dies en MHW</option>
         <option value="mhw-intensity">Intensitat MHW (obs-cf)</option>
       </select>
     </div>
@@ -195,10 +135,10 @@
         caption: "Els tons vermells indiquen SST estival mes alta que la referencia 1940-1959. El grafic incrustat mostra la mitjana regional acumulada any a any."
       },
       "mhw-days": {
-        gif: "animacio_mhw_dies_delta.gif",
-        poster: "animacio_mhw_dies_delta_poster.png",
-        alt: "Animacio anual del Delta de dies en MHW observats menys contrafactuals",
-        caption: "Mapa anual del nombre addicional de dies en MHW respecte el contrafactual. L'escala es fixa per comparar anys i detectar on s'intensifica la durada."
+        gif: "animacio_mhw_dies.gif",
+        poster: "animacio_mhw_dies_poster.png",
+        alt: "Animacio anual del nombre de dies observats en MHW",
+        caption: "Mapa anual del nombre de dies observats en MHW. L'escala es fixa per comparar anys i veure on s'allarguen espacialment les onades de calor marines."
       },
       "mhw-intensity": {
         gif: "animacio_mhw_intensitat_delta.gif",
