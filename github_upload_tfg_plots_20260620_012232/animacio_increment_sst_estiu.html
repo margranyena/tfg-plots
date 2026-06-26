@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animacions espacials de SST i MHW</title>
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #5c6870;
+      --line: #d7dde1;
+      --paper: #ffffff;
+      --bg: #f6f8f7;
+      --accent: #c3422f;
+      --accent-2: #087f8c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+    main {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 650;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      flex-wrap: wrap;
+    }
+    label {
+      font-weight: 700;
+    }
+    select {
+      min-width: min(100%, 320px);
+      border: 1px solid #b9c4cb;
+      border-radius: 6px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      padding: 9px 34px 9px 11px;
+    }
+    figure {
+      margin: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    figcaption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--line);
+    }
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .actions a {
+      color: var(--accent-2);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top">
+      <div>
+        <h1>Mapes animats de l'escalfament i les MHW</h1>
+        <p>Selector de mapes anuals per veure l'evolucio espacial de la SST estival i de les onades de calor marines.</p>
+      </div>
+      <a href="index.html">Tornar a l'index</a>
+    </div>
+    <div class="controls">
+      <label for="metric">Variable</label>
+      <select id="metric">
+        <option value="sst">Increment estival de SST</option>
+        <option value="mhw-days">Dies en MHW</option>
+        <option value="mhw-intensity">Intensitat MHW (obs-cf)</option>
+      </select>
+    </div>
+    <figure>
+      <img id="animation" src="animacio_increment_sst_estiu.gif" alt="Animacio anual de l'increment estival de SST a la Mediterrania occidental">
+      <figcaption id="caption">Els tons vermells indiquen SST estival mes alta que la referencia 1940-1959. El grafic incrustat mostra la mitjana regional acumulada any a any.</figcaption>
+    </figure>
+    <div class="actions">
+      <a id="downloadGif" href="animacio_increment_sst_estiu.gif" download>Descarregar GIF</a>
+      <a id="downloadPoster" href="animacio_increment_sst_estiu_poster.png" download>Descarregar imatge resum</a>
+    </div>
+  </main>
+  <script>
+    const animations = {
+      "sst": {
+        gif: "animacio_increment_sst_estiu.gif",
+        poster: "animacio_increment_sst_estiu_poster.png",
+        alt: "Animacio anual de l'increment estival de SST a la Mediterrania occidental",
+        caption: "Els tons vermells indiquen SST estival mes alta que la referencia 1940-1959. El grafic incrustat mostra la mitjana regional acumulada any a any."
+      },
+      "mhw-days": {
+        gif: "animacio_mhw_dies.gif",
+        poster: "animacio_mhw_dies_poster.png",
+        alt: "Animacio anual del nombre de dies observats en MHW",
+        caption: "Mapa anual del nombre de dies observats en MHW. L'escala es fixa per comparar anys i veure on s'allarguen espacialment les onades de calor marines."
+      },
+      "mhw-intensity": {
+        gif: "animacio_mhw_intensitat_delta.gif",
+        poster: "animacio_mhw_intensitat_delta_poster.png",
+        alt: "Animacio anual del Delta d'intensitat de MHW observada menys contrafactual",
+        caption: "Mapa anual de l'increment d'intensitat mitjana de les MHW respecte el contrafactual, calculat sobre els dies MHW observats."
+      }
+    };
+
+    const selector = document.getElementById("metric");
+    const image = document.getElementById("animation");
+    const caption = document.getElementById("caption");
+    const downloadGif = document.getElementById("downloadGif");
+    const downloadPoster = document.getElementById("downloadPoster");
+
+    selector.addEventListener("change", () => {
+      const item = animations[selector.value];
+      image.src = item.gif;
+      image.alt = item.alt;
+      caption.textContent = item.caption;
+      downloadGif.href = item.gif;
+      downloadPoster.href = item.poster;
+    });
+  </script>
+</body>
+</html>
