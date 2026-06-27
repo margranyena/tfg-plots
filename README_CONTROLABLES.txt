@@ -1,0 +1,1 @@
+Carpeta alternativa amb els GIFs convertits a visors HTML controlables.\nLa carpeta original no s'ha modificat. Per provar-ho, obre index.html.\n
